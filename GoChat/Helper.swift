@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import FirebaseDatabase
 
 class Helper {
     static let helper = Helper()
@@ -18,10 +19,13 @@ class Helper {
         
         // Login de usuario anonimo
         
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (anonymosUser: FIRUser?, error: NSError?) in
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (usuarioAnonimo: FIRUser?, error: NSError?) in
             
             if error == nil {
-                print("UserId: \(anonymosUser!.uid)")
+                
+                let newUser = FIRDatabase.database().reference().child("users").child(usuarioAnonimo!.uid)
+                newUser.setValue(["displayName": "anonimo", "id" : "\(usuarioAnonimo!.uid)", "profileUrl": ""])
+                
                 self.mudaParaNavigationViewController()
             } else {
                 print(error!.localizedDescription)
@@ -39,15 +43,15 @@ class Helper {
             if error != nil {
                 print(error?.localizedDescription)
             } else {
-                print(user?.email)
-                print(user?.displayName)
                 
+                let newUser = FIRDatabase.database().reference().child("users").child(user!.uid)
+                newUser.setValue(["displayName": "\(user!.displayName!)", "id" : "\(user!.uid)", "profileUrl": "\(user!.photoURL!)"])
                 self.mudaParaNavigationViewController()
             }
         })
     }
     
-    private func mudaParaNavigationViewController () {
+    func mudaParaNavigationViewController () {
         
         //Pega a storyboard pelo nome
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

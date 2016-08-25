@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseAuth
+
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var botaoAnonimo: UIButton!
@@ -22,6 +24,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         GIDSignIn.sharedInstance().clientID = "784528099924-q7s7pm1dgl7tp623oqmuck8furh5vm87.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        FIRAuth.auth()?.addAuthStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
+            
+            if user != nil {
+                Helper.helper.mudaParaNavigationViewController()
+            } else {
+                print("Não autorizado")
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {
