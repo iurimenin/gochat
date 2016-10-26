@@ -89,18 +89,6 @@ class ChatViewController: JSQMessagesViewController {
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
                     
                 case "PHOTO":
-                    
-//                    let fileUrl = dict["fileUrl"] as! String
-//                    let url = NSURL(string: fileUrl)
-//                    let data = NSData(contentsOfURL: url!)
-//                    let picture = UIImage(data: data!)
-//                    let photo = JSQPhotoMediaItem(image: picture)
-//                    
-//                    if self.senderId == senderId {
-//                        photo.appliesMediaViewMaskAsOutgoing = true
-//                    } else {
-//                        photo.appliesMediaViewMaskAsOutgoing = false
-//                    }
 
                     let photo = JSQPhotoMediaItem(image: nil)
                     let fileUrl = dict["fileUrl"] as! String
