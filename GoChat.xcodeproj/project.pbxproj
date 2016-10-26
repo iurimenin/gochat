@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3E976E1DC03E3B00374B91 /* GoChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoChat.entitlements; sourceTree = "<group>"; };
 		0CF1C9391D6D11F100F7955F /* GoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF1C93C1D6D11F100F7955F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CF1C9411D6D11F100F7955F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		0CF1C93B1D6D11F100F7955F /* GoChat */ = {
 			isa = PBXGroup;
 			children = (
+				0C3E976E1DC03E3B00374B91 /* GoChat.entitlements */,
 				0CF1C93C1D6D11F100F7955F /* AppDelegate.swift */,
 				0CF1C9611D6D3D9400F7955F /* Helper.swift */,
 				0CF1C9401D6D11F100F7955F /* Main.storyboard */,
@@ -161,6 +163,13 @@
 				TargetAttributes = {
 					0CF1C9381D6D11F100F7955F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = X9EQW4N278;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -417,10 +426,13 @@
 			baseConfigurationReference = 949FA064234DA4FC67CA68BF /* Pods-GoChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GoChat/GoChat.entitlements;
+				DEVELOPMENT_TEAM = X9EQW4N278;
 				INFOPLIST_FILE = GoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.iuri.GoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -429,10 +441,13 @@
 			baseConfigurationReference = 5BCD87A7A7BF70AC0C5F530C /* Pods-GoChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GoChat/GoChat.entitlements;
+				DEVELOPMENT_TEAM = X9EQW4N278;
 				INFOPLIST_FILE = GoChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.iuri.GoChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

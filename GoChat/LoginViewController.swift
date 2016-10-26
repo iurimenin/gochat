@@ -12,6 +12,17 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error == nil {
+            print(user.authentication)
+            Helper.helper.loginGoogle(user.authentication)
+        } else {
+            print(error.localizedDescription)
+            return
+        }
+    }
+
+    
     @IBOutlet weak var botaoAnonimo: UIButton!
     
     override func viewDidLoad() {
@@ -20,15 +31,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         //botaoAnonimo
         //setar a cor da borde e largura
         botaoAnonimo.layer.borderWidth = 2.0
-        botaoAnonimo.layer.borderColor = UIColor.whiteColor().CGColor
+        botaoAnonimo.layer.borderColor = UIColor.white.cgColor
         GIDSignIn.sharedInstance().clientID = "784528099924-q7s7pm1dgl7tp623oqmuck8furh5vm87.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        FIRAuth.auth()?.addAuthStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
+        FIRAuth.auth()?.addStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
             
             if user != nil {
                 Helper.helper.mudaParaNavigationViewController()
@@ -43,25 +54,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginAnonimo(sender: UIButton) {
+    @IBAction func loginAnonimo(_ sender: UIButton) {
 
         // Login de usuario anonimo
         Helper.helper.loginAnonimo()
     }
     
-    @IBAction func loginGoogle(sender: UIButton) {
+    @IBAction func loginGoogle(_ sender: UIButton) {
         
         // Login com google
         GIDSignIn.sharedInstance().signIn()
-    }
-    
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-        if error == nil {
-            print(user.authentication)
-            Helper.helper.loginGoogle(user.authentication)
-        } else {
-            print(error.localizedDescription)
-            return
-        }
     }
 }

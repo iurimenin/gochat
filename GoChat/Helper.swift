@@ -19,7 +19,7 @@ class Helper {
         
         // Login de usuario anonimo
         
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (usuarioAnonimo: FIRUser?, error: NSError?) in
+        FIRAuth.auth()?.signInAnonymously(completion: { (usuarioAnonimo, error) in
             
             if error == nil {
                 
@@ -34,11 +34,11 @@ class Helper {
         })
     }
     
-    func loginGoogle (authentication: GIDAuthentication) {
+    func loginGoogle (_ authentication: GIDAuthentication) {
         
-        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken, accessToken: authentication.accessToken)
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             
             if error != nil {
                 print(error?.localizedDescription)
@@ -57,10 +57,10 @@ class Helper {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         //pega o navigationController pelo nome
-        let naviVC = storyboard.instantiateViewControllerWithIdentifier("NavigationVC") as! UINavigationController
+        let naviVC = storyboard.instantiateViewController(withIdentifier: "NavigationVC") as! UINavigationController
         
         //pega o appDelegate
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         //seta no appDelegate o viewControoler como root view
         appDelegate.window?.rootViewController = naviVC
