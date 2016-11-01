@@ -13,6 +13,7 @@ import AVKit
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
+import SDWebImage
 
 class ChatViewController: JSQMessagesViewController {
 
@@ -91,25 +92,39 @@ class ChatViewController: JSQMessagesViewController {
                 case "PHOTO":
 
                     let photo = JSQPhotoMediaItem(image: nil)
-                    let fileUrl = dict["fileUrl"] as! String
-                    let url = URL(string: fileUrl)
+//                    let fileUrl = dict["fileUrl"] as! String
+//                    let url = URL(string: fileUrl)
+//                    
+//                    DispatchQueue.global().async {
+//                        let data = try? Data(contentsOf: url!)
+//                        let picture = UIImage(data: data!)
+//                        DispatchQueue.main.async {
+//                            photo?.image = picture
+//                            self.collectionView.reloadData()
+//                        }
+//                    }
                     
-                    DispatchQueue.global().async {
-                        let data = try? Data(contentsOf: url!)
-                        let picture = UIImage(data: data!)
-                        DispatchQueue.main.async {
-                            photo?.image = picture
-                            self.collectionView.reloadData()
-                        }
-                    }
+                    
+                    let downloader = SDWebImageDownloader.shared()
+                    let fileUrl = dict["fileUrl"] as! String
+                    
+                    downloader?.downloadImage(with: URL(string: fileUrl),
+                                              options: [],
+                                              progress: nil,
+                                              completed: { (image, data, error, finished) in
+                                                DispatchQueue.main.async {
+                                                    photo?.image = image
+                                                    self.collectionView.reloadData()
+                                                }
+                    })
+                    
+                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                     
                     if self.senderId == senderId {
                         photo?.appliesMediaViewMaskAsOutgoing = true
                     } else {
                         photo?.appliesMediaViewMaskAsOutgoing = false
                     }
-
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                     
                 case "VIDEO":
                         

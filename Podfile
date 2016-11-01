@@ -10,6 +10,9 @@ target 'GoChat' do
   pod 'FirebaseStorage'
   pod 'GoogleSignIn'
   pod 'JSQMessagesViewController'
+  pod 'SDWebImage'
+  pod 'SDWebImage/Core'
+  pod 'SDWebImage/WebP'
   
   # Pods for GoChat
 

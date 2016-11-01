@@ -47,6 +47,36 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - libwebp (0.5.0):
+    - libwebp/core (= 0.5.0)
+    - libwebp/dec (= 0.5.0)
+    - libwebp/demux (= 0.5.0)
+    - libwebp/dsp (= 0.5.0)
+    - libwebp/enc (= 0.5.0)
+    - libwebp/mux (= 0.5.0)
+    - libwebp/utils (= 0.5.0)
+    - libwebp/webp (= 0.5.0)
+  - libwebp/core (0.5.0):
+    - libwebp/webp
+  - libwebp/dec (0.5.0):
+    - libwebp/core
+  - libwebp/demux (0.5.0):
+    - libwebp/core
+  - libwebp/dsp (0.5.0):
+    - libwebp/core
+  - libwebp/enc (0.5.0):
+    - libwebp/core
+  - libwebp/mux (0.5.0):
+    - libwebp/core
+  - libwebp/utils (0.5.0):
+    - libwebp/core
+  - libwebp/webp (0.5.0)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+  - SDWebImage/WebP (3.8.1):
+    - libwebp
+    - SDWebImage/Core
 
 DEPENDENCIES:
   - Firebase
@@ -55,6 +85,9 @@ DEPENDENCIES:
   - FirebaseStorage
   - GoogleSignIn
   - JSQMessagesViewController
+  - SDWebImage
+  - SDWebImage/Core
+  - SDWebImage/WebP
 
 SPEC CHECKSUMS:
   Firebase: 9b3edeffaf60d56e377dc5281e91c4ba935a5ad9
@@ -73,7 +106,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  libwebp: 68ba2001ba6806ee52837ebd77a551a0b6567e4e
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 03d3a55143c2c8591f4ad4599fb7e371e1515d50
+PODFILE CHECKSUM: a82b692fb8cea6be9470823c1cfa1d59cdbb543b
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
