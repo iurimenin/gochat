@@ -1,3 +1,3 @@
-# GoChat<a href="https://codebeat.co/projects/github-com-iurimenin-gochat"><img alt="codebeat badge" src="https://codebeat.co/badges/80c0773b-88de-4afd-970d-420b6ac27f98" /></a>
+# GoChat [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c9aa2a1ff4c84bdf92164127e6e7b585)](https://www.codacy.com/app/iurimenin/gochat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=iurimenin/gochat&amp;utm_campaign=Badge_Grade)
 
 Aplicativo em Swift e Firebase 3 do curso https://www.udemy.com/ios-chat-apps-with-firebase-and-social-login/
